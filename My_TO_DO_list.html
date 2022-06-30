@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To Do List</title>
+		<style>
+				#task{
+					position:relative;
+					padding:30px 15px;
+					background-color:rgb(255, 0, 102);
+					border-radius:5px;
+					box-shadow:0px 15px 30px rgb(255,255,255);
+					
+				}
+				#container{
+					width:80%;
+					margin-left:10%;
+					margin-top:10%;
+				}
+				#header{
+					Text-align:center;
+					padding-top:20px;
+					padding-bottom:5px;
+					font-size:2vw;
+					color:white;
+				}
+				#addnewtask{
+					width:70%;
+					height:120px;
+					background-color:rgb(153, 0, 153);
+					margin-left:20%;
+				}
+				#addnewtask input{
+				margin-left:90px;
+				border-radius:1px;
+				width:70%;
+				height:30px;
+				font-size:1.2vw;
+				font-family:sans-serif;
+				padding:3px 2px;
+				}
+				.butn{
+					width:12%;
+					height:35px;
+					margin-right:0px;
+					background-color:rgb(102, 153, 255);
+					font-size:1vw;
+					position:relative;
+					cursor:pointer;
+				}
+				ul{
+					margin:0px;
+					padding:0px;
+					width:70%;
+					margin-left:20%;
+					height:340px;
+				}
+				ul li{
+					list-style-type:none;
+					font-size:1.8vw;
+					background-color:rgb(230,230,255);
+					padding: 12px 8px 12px 40px;
+					cursor: pointer;
+					position: relative;
+				}
+				ul li:nth-child(odd) 
+				{
+				background: rgb(217, 217, 217);
+				}
+				ul li.striken
+				{
+					background:rgb(140, 140, 140);
+					color:white;
+					text-decoration: line-through;
+				}
+				.closebtn 
+				{
+					position: absolute;
+					right: 0;
+					top: 0;
+					padding: 20px 18px 15px 19px;
+				}
+		</style>
+</head>
+<body>
+        <div id="container">
+				
+					<div id="addnewtask">
+					<div id="header">My To DO List</div>
+					<input type="text" id="inp" placeholder="Enter Task">	
+					<button class="butn" onclick="newElement()">Add</button>
+					</div>
+					<ul id="list">
+						<li>Hit the gym</li>
+						<li class="striken">Pay bills</li>
+						<li>MeetGerorge</li>
+						<li>Buy eggs</li>
+						<li>Read a book</li>
+						<li>Organize office</li>
+					</ul>
+		</div>
+<script>
+var myNodelist = document.getElementsByTagName("li");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "closebtn";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+
+var close = document.getElementsByClassName("closebtn");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('striken');
+  }
+}, false);
+
+
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("inp").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("list").appendChild(li);
+  }
+  document.getElementById("inp").value = "";
+
+  var span = document.createElement("BUTTON");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "closebtn";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To Do List</title>
+		<style>
+				#task{
+					position:relative;
+					padding:30px 15px;
+					background-color:rgb(255, 0, 102);
+					border-radius:5px;
+					box-shadow:0px 15px 30px rgb(255,255,255);
+					
+				}
+				#container{
+					width:80%;
+					margin-left:10%;
+					margin-top:10%;
+				}
+				#header{
+					Text-align:center;
+					padding-top:20px;
+					padding-bottom:5px;
+					font-size:2vw;
+					color:white;
+				}
+				#addnewtask{
+					width:70%;
+					height:120px;
+					background-color:rgb(153, 0, 153);
+					margin-left:20%;
+				}
+				#addnewtask input{
+				margin-left:90px;
+				border-radius:1px;
+				width:70%;
+				height:30px;
+				font-size:1.2vw;
+				font-family:sans-serif;
+				padding:3px 2px;
+				}
+				.butn{
+					width:12%;
+					height:35px;
+					margin-right:0px;
+					background-color:rgb(102, 153, 255);
+					font-size:1vw;
+					position:relative;
+					cursor:pointer;
+				}
+				ul{
+					margin:0px;
+					padding:0px;
+					width:70%;
+					margin-left:20%;
+					height:340px;
+				}
+				ul li{
+					list-style-type:none;
+					font-size:1.8vw;
+					background-color:rgb(230,230,255);
+					padding: 12px 8px 12px 40px;
+					cursor: pointer;
+					position: relative;
+				}
+				ul li:nth-child(odd) 
+				{
+				background: rgb(217, 217, 217);
+				}
+				ul li.striken
+				{
+					background:rgb(140, 140, 140);
+					color:white;
+					text-decoration: line-through;
+				}
+				.closebtn 
+				{
+					position: absolute;
+					right: 0;
+					top: 0;
+					padding: 20px 18px 15px 19px;
+				}
+		</style>
+</head>
+<body>
+        <div id="container">
+				
+					<div id="addnewtask">
+					<div id="header">My To DO List</div>
+					<input type="text" id="inp" placeholder="Enter Task">	
+					<button class="butn" onclick="newElement()">Add</button>
+					</div>
+					<ul id="list">
+						<li>Hit the gym</li>
+						<li class="striken">Pay bills</li>
+						<li>MeetGerorge</li>
+						<li>Buy eggs</li>
+						<li>Read a book</li>
+						<li>Organize office</li>
+					</ul>
+		</div>
+<script>
+var myNodelist = document.getElementsByTagName("li");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "closebtn";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+
+var close = document.getElementsByClassName("closebtn");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('striken');
+  }
+}, false);
+
+
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("inp").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("list").appendChild(li);
+  }
+  document.getElementById("inp").value = "";
+
+  var span = document.createElement("BUTTON");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "closebtn";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+</script>
+</body>
+</html>
